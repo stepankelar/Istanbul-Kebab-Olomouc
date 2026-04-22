@@ -35,7 +35,8 @@
         /* Navigation (Mobile First) */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: var(--dark-bg); color: var(--text-light); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         
-        .logo { font-size: 1.5rem; font-weight: bold; font-family: 'Oswald', sans-serif; z-index: 101; }
+        .logo { position: relative; font-size: 1.5rem; font-weight: bold; font-family: 'Oswald', sans-serif; z-index: 101; display: inline-block; }
+        .logo-city { position: absolute; right: -25px; bottom: -12px; font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: var(--primary-red); text-transform: none; letter-spacing: 1px; transform: rotate(-3deg); }
         
         .nav-right { display: flex; align-items: center; gap: 15px; z-index: 101; }
         
@@ -69,6 +70,7 @@
         }
         @media(max-width: 450px) {
             .logo { font-size: 1.2rem; }
+            .logo-city { font-size: 1.1rem; bottom: -10px; right: -20px; }
             .lang-toggle { padding: 4px 6px; font-size: 0.8rem; }
             .nav-right { gap: 10px; }
         }
@@ -144,12 +146,15 @@
         /* Footer */
         footer { text-align: center; padding: 20px 5%; background-color: #111; color: #888; font-size: 0.9rem; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body class="lang-cs">
 
     <nav>
-        <div class="logo">MARDINI KEBAB</div>
+        <div class="logo">
+            MARDINI KEBAB
+            <span class="logo-city">Olomouc</span>
+        </div>
         
         <div class="nav-links" id="navLinks">
             <a href="#menu" onclick="toggleMenu()"><span class="cs">Menu</span><span class="en">Menu</span></a>
