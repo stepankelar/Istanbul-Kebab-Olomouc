@@ -336,4 +336,43 @@
         <h2>Kde nás najdete</h2>
         <p>Adresa: <strong>Sokolská 548/44, 779 00 Olomouc</strong></p>
         <div class="map-container">
-            <iframe src="
+            <iframe src="https://maps.google.com/maps?q=Mardini%20Kebab,%20Sokolsk%C3%A1%20548/44,%20Olomouc&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <section id="location" class="location">
+        <h2>Kontakt</h2>
+        <p>Telefon: <strong>+420 773 154 000</strong></p>
+        
+        <div class="status" id="store-status">
+            <div class="status-indicator" id="status-dot"></div>
+            <span id="status-text">Ověřuji otevírací dobu...</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Mardini Kebab. Všechna práva vyhrazena.</p>
+    </footer>
+
+    <script>
+        function checkStoreHours() {
+            const currentHour = new Date().toLocaleString("en-US", {timeZone: "Europe/Prague", hour: 'numeric', hour12: false});
+            const hour = parseInt(currentHour);
+            
+            const statusText = document.getElementById('status-text');
+            const statusDot = document.getElementById('status-dot');
+            
+            // Příklad otevírací doby: 10:00 - 00:00
+            if (hour >= 10 || hour < 0) { 
+                statusText.innerText = "🟢 OTEVŘENO";
+                statusDot.style.backgroundColor = "#4CAF50"; 
+            } else {
+                statusText.innerText = "🔴 ZAVŘENO";
+                statusDot.style.backgroundColor = "#F44336"; 
+            }
+        }
+
+        window.onload = checkStoreHours;
+    </script>
+</body>
+</html>
