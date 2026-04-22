@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Kebab in Olomouc | İstanbul Kebab | Open Late</title>
+    <meta name="description" content="Authentic Turkish Taste in the Heart of Olomouc. Freshly carved kebabs, warm bread, and late-night cravings satisfied.">
+    <style>
+        /* CSS Variables for Branding */
+        :root {
+            --primary-red: #DC143C;
+            --primary-red-hover: #b01030;
+            --accent-yellow: #F4C430;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f9f9f9;
+            --text-main: #333;
+            --text-light: #fff;
+        }
+
+        /* Base Styles & Mobile-First Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { color: var(--text-main); background-color: var(--light-bg); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        a { text-decoration: none; }
+        
+        /* Reusable Buttons */
+        .btn { display: inline-block; padding: 12px 24px; font-weight: bold; border-radius: 4px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .btn-primary { background-color: var(--primary-red); color: var(--text-light); border: none; }
+        .btn-primary:hover { background-color: var(--primary-red-hover); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--text-light); color: var(--text-light); }
+        .btn-outline:hover { background-color: var(--text-light); color: var(--dark-bg); }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: var(--dark-bg); color: var(--text-light); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.5rem; font-weight: bold; font-family: 'Oswald', sans-serif; }
+        .nav-links { display: none; } /* Hidden on mobile for simplicity, handled via hamburger menu usually */
+        
+        @media(min-width: 768px) {
+            .nav-links { display: flex; gap: 20px; }
+            .nav-links a { color: var(--text-light); font-weight: 500; }
+        }
+
+        /* Hero Section */
+        .hero { position: relative; background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1529148482759-b35b25c5f217?auto=format&fit=crop&w=1920&q=80') center/cover; color: var(--text-light); padding: 100px 5%; text-align: center; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; color: var(--accent-yellow); }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+
+        /* Social Proof Strip */
+        .social-proof { background-color: var(--accent-yellow); color: var(--dark-bg); text-align: center; padding: 15px 5%; font-weight: bold; font-size: 1.1rem; }
+
+        /* Menu Section (Psychology & Decoy Effect) */
+        .menu { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+        .menu h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; }
+        .menu-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        
+        @media(min-width: 768px) { .menu-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .menu-item { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+        .menu-img { width: 100%; height: 200px; object-fit: cover; }
+        .menu-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .menu-title { font-size: 1.3rem; margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .menu-desc { font-size: 0.9rem; color: #666; margin-bottom: 20px; flex-grow: 1; }
+        .menu-item .btn { width: 100%; }
+
+        /* Location & Hours */
+        .location { background-color: var(--dark-bg); color: var(--text-light); padding: 60px 5%; text-align: center; }
+        .location h2 { margin-bottom: 20px; color: var(--accent-yellow); }
+        .status { font-size: 1.2rem; font-weight: bold; margin: 15px 0; display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 30px; background: rgba(255,255,255,0.1); }
+        .status-indicator { width: 12px; height: 12px; border-radius: 50%; background-color: #4CAF50; }
+        .map-container { margin-top: 30px; border-radius: 8px; overflow: hidden; }
+
+        /* Footer */
+        footer { text-align: center; padding: 20px 5%; background-color: #111; color: #888; font-size: 0.9rem; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">İSTANBUL KEBAB</div>
+        <div class="nav-links">
+            <a href="#menu">Menu</a>
+            <a href="#location">Location</a>
+        </div>
+        <a href="#menu" class="btn btn-primary">Order Now</a>
+    </nav>
+
+    <header class="hero">
+        <h1>The Best Kebab in Olomouc</h1>
+        <p>Hot, fresh, and ready when you are. Authentic Turkish flavor open late to satisfy your cravings.</p>
+        <div class="hero-buttons">
+            <a href="#menu" class="btn btn-primary">Order for Pickup</a>
+            <a href="#location" class="btn btn-outline">Get Directions</a>
+        </div>
+    </header>
+
+    <section class="social-proof">
+        ⭐⭐⭐⭐⭐ 4.6/5 on Google | "Best late-night food in the city!" - Local Guide
+    </section>
+
+    <section id="menu" class="menu">
+        <h2>Our Best Sellers</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1615996001375-c7ef13294436?auto=format&fit=crop&w=600&q=80" alt="Döner Box" class="menu-img">
+                <div class="menu-content">
+                    <div class="menu-title"><strong>Döner Box</strong> <span>140 CZK</span></div>
+                    <p class="menu-desc">Perfectly carved veal/chicken, fresh fries, crisp salad, and our signature garlic sauce.</p>
+                    <button class="btn btn-primary">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Dürüm Wrap" class="menu-img">
+                <div class="menu-content">
+                    <div class="menu-title"><strong>Dürüm Wrap</strong> <span>130 CZK</span></div>
+                    <p class="menu-desc">Freshly baked flatbread wrapped tightly around hot meat, onions, tomatoes, and spicy sauce.</p>
+                    <button class="btn btn-primary">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Sultan Platter" class="menu-img">
+                <div class="menu-content">
+                    <div class="menu-title"><strong>Sultan Platter</strong> <span>290 CZK</span></div>
+                    <p class="menu-desc">A massive feast. Double meat, extra fries, grilled vegetables, flatbread, and three dips. Made to share.</p>
+                    <button class="btn btn-primary">Add to Order</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="location">
+        <h2>Drop By or Order Ahead</h2>
+        <p>Sokolská 548, 779 00 Olomouc 9</p>
+        <p>Call us: <strong>+420 773 154 000</strong></p>
+        
+        <div class="status" id="store-status">
+            <div class="status-indicator" id="status-dot"></div>
+            <span id="status-text">Checking hours...</span>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2575.529323719941!2d17.25191021570776!3d49.59600197936647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47124e9336d85915%3A0xc62b80f15c1e2b5e!2zU29rb2xza8OhIDU0OCwgNzc5IDAwIE9sb21vdWM!5e0!3m2!1sen!2scz!4v1698000000000!5m2!1sen!2scz" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 İstanbul Kebab Olomouc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function checkStoreHours() {
+            // Get current time in Czech timezone (CET/CEST)
+            const options = { timeZone: 'Europe/Prague', hour: 'numeric', minute: 'numeric', hour12: false, weekday: 'short' };
+            const formatter = new Intl.DateTimeFormat([], options);
+            const timeString = formatter.format(new Date());
+            
+            // Basic logic: Open from 10:00 to 00:00 (Midnight)
+            const currentHour = new Date().toLocaleString("en-US", {timeZone: "Europe/Prague", hour: 'numeric', hour12: false});
+            const hour = parseInt(currentHour);
+            
+            const statusText = document.getElementById('status-text');
+            const statusDot = document.getElementById('status-dot');
+            
+            // Adjust this logic based on exact days/hours
+            if (hour >= 10 || hour < 0) { // Open 10 AM to Midnight
+                statusText.innerText = "🟢 OPEN NOW - Closes at 12:00 AM";
+                statusDot.style.backgroundColor = "#4CAF50"; // Green
+            } else {
+                statusText.innerText = "🔴 CLOSED - Opens at 10:00 AM";
+                statusDot.style.backgroundColor = "#F44336"; // Red
+            }
+        }
+
+        // Run on load
+        window.onload = checkStoreHours;
+    </script>
+</body>
+</html>
