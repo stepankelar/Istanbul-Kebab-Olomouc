@@ -23,6 +23,10 @@
         h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         a { text-decoration: none; }
         
+        /* Language Toggle Classes */
+        body.lang-en .cs { display: none !important; }
+        body.lang-cs .en { display: none !important; }
+
         /* Reusable Buttons */
         .btn { display: inline-block; padding: 12px 24px; font-weight: bold; border-radius: 4px; text-align: center; cursor: pointer; transition: 0.3s; width: 100%; max-width: 300px; }
         .btn-primary { background-color: var(--primary-red); color: var(--text-light); border: none; }
@@ -30,9 +34,15 @@
 
         /* Navigation (Mobile First) */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: var(--dark-bg); color: var(--text-light); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        
         .logo { font-size: 1.5rem; font-weight: bold; font-family: 'Oswald', sans-serif; z-index: 101; }
         
-        .menu-toggle { font-size: 1.8rem; background: none; border: none; color: var(--text-light); cursor: pointer; z-index: 101; }
+        .nav-right { display: flex; align-items: center; gap: 15px; z-index: 101; }
+        
+        .lang-toggle { background: transparent; border: 1px solid var(--text-light); color: var(--text-light); padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-family: 'Oswald', sans-serif; transition: 0.3s; }
+        .lang-toggle:hover { background: var(--text-light); color: var(--dark-bg); }
+
+        .menu-toggle { font-size: 1.8rem; background: none; border: none; color: var(--text-light); cursor: pointer; }
         
         .nav-links { 
             position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--dark-bg); 
@@ -55,7 +65,12 @@
             .nav-links.active { padding: 0; border: none; }
             .nav-links a { padding: 0; width: auto; font-size: 1.1rem; }
             .nav-links a:hover { background-color: transparent; }
-            .nav-spacer { width: 150px; justify-self: end; } /* Spacer to keep grid centered */
+            .nav-right { justify-self: end; }
+        }
+        @media(max-width: 450px) {
+            .logo { font-size: 1.2rem; }
+            .lang-toggle { padding: 4px 6px; font-size: 0.8rem; }
+            .nav-right { gap: 10px; }
         }
 
         /* Hero Section */
@@ -131,299 +146,550 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="lang-cs">
 
     <nav>
         <div class="logo">MARDINI KEBAB</div>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        
         <div class="nav-links" id="navLinks">
-            <a href="#menu" onclick="toggleMenu()">Menu</a>
-            <a href="#hours" onclick="toggleMenu()">Otevírací doba</a>
-            <a href="#find-us" onclick="toggleMenu()">Kde nás najdete</a>
-            <a href="#reviews" onclick="toggleMenu()">Recenze</a>
-            <a href="#location" onclick="toggleMenu()">Kontakt</a>
+            <a href="#menu" onclick="toggleMenu()"><span class="cs">Menu</span><span class="en">Menu</span></a>
+            <a href="#hours" onclick="toggleMenu()"><span class="cs">Otevírací doba</span><span class="en">Opening Hours</span></a>
+            <a href="#find-us" onclick="toggleMenu()"><span class="cs">Kde nás najdete</span><span class="en">Location</span></a>
+            <a href="#reviews" onclick="toggleMenu()"><span class="cs">Recenze</span><span class="en">Reviews</span></a>
+            <a href="#location" onclick="toggleMenu()"><span class="cs">Kontakt</span><span class="en">Contact</span></a>
         </div>
-        <div class="nav-spacer" style="display: none;"></div>
+        
+        <div class="nav-right">
+            <button class="lang-toggle" onclick="toggleLanguage()">CZ/EN</button>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
     </nav>
 
     <header class="hero">
-        <h1>Skvělý Kebab u vás</h1>
-        <p>Čerstvé suroviny, poctivé porce a nezaměnitelná chuť.</p>
+        <h1>
+            <span class="cs">Skvělý Kebab u vás</span>
+            <span class="en">Great Kebab For You</span>
+        </h1>
+        <p>
+            <span class="cs">Čerstvé suroviny, poctivé porce a nezaměnitelná chuť.</span>
+            <span class="en">Fresh ingredients, generous portions, and unmistakable taste.</span>
+        </p>
         <div class="hero-buttons">
-            <a href="#menu" class="btn btn-primary">Zobrazit Menu</a>
+            <a href="#menu" class="btn btn-primary">
+                <span class="cs">Zobrazit Menu</span>
+                <span class="en">View Menu</span>
+            </a>
         </div>
     </header>
 
     <section id="menu" class="menu">
-        <h2>Naše Menu</h2>
+        <h2>
+            <span class="cs">Naše Menu</span>
+            <span class="en">Our Menu</span>
+        </h2>
 
-        <h3 class="menu-category">Kebab v tureckém chlebu (Döner Kebab)</h3>
+        <h3 class="menu-category">
+            <span class="cs">Kebab v tureckém chlebu (Döner Kebab)</span>
+            <span class="en">Kebab in Turkish Bread (Döner Kebab)</span>
+        </h3>
         <div class="menu-list">
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>1. Kebab v tureckém chlebu klasický</span> <span class="menu-list-price">110,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou</div>
+                <div class="menu-list-header">
+                    <span>1. <span class="cs">Kebab v tureckém chlebu klasický</span><span class="en">Classic Kebab in Turkish bread</span></span>
+                    <span class="menu-list-price">110,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou</span><span class="en">meat, salad, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>2. Kebab v tureckém chlebu se sýrem</span> <span class="menu-list-price">120,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, sýr</div>
+                <div class="menu-list-header">
+                    <span>2. <span class="cs">Kebab v tureckém chlebu se sýrem</span><span class="en">Kebab in Turkish bread with cheese</span></span>
+                    <span class="menu-list-price">120,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, sýr</span><span class="en">meat, salad, sauce, cheese</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>3. Kebab v tureckém chlebu hawaii</span> <span class="menu-list-price">120,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, ananas</div>
+                <div class="menu-list-header">
+                    <span>3. <span class="cs">Kebab v tureckém chlebu hawaii</span><span class="en">Kebab in Turkish bread hawaii</span></span>
+                    <span class="menu-list-price">120,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, ananas</span><span class="en">meat, salad, sauce, pineapple</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>4. Kebab v tureckém chlebu s hranolkami</span> <span class="menu-list-price">125,-</span></div>
-                <div class="menu-list-desc">maso s omáčkou, hranolky</div>
+                <div class="menu-list-header">
+                    <span>4. <span class="cs">Kebab v tureckém chlebu s hranolkami</span><span class="en">Kebab in Turkish bread with fries</span></span>
+                    <span class="menu-list-price">125,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso s omáčkou, hranolky</span><span class="en">meat, sauce, fries</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>5. Kebab v tureckém chlebu jen maso</span> <span class="menu-list-price">130,-</span></div>
-                <div class="menu-list-desc">jen maso s omáčkou</div>
+                <div class="menu-list-header">
+                    <span>5. <span class="cs">Kebab v tureckém chlebu jen maso</span><span class="en">Kebab in Turkish bread meat only</span></span>
+                    <span class="menu-list-price">130,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">jen maso s omáčkou</span><span class="en">only meat, sauce</span>
+                </div>
             </div>
         </div>
 
-        <h3 class="menu-category">Kebab v tortille (Dürüm Kebab)</h3>
+        <h3 class="menu-category">
+            <span class="cs">Kebab v tortille (Dürüm Kebab)</span>
+            <span class="en">Kebab in Tortilla (Dürüm Kebab)</span>
+        </h3>
         <div class="menu-list">
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>6. Tortilla klasický</span> <span class="menu-list-price">125,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou</div>
+                <div class="menu-list-header">
+                    <span>6. <span class="cs">Tortilla klasický</span><span class="en">Classic Tortilla</span></span>
+                    <span class="menu-list-price">125,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou</span><span class="en">meat, salad, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>7. Tortilla se sýrem</span> <span class="menu-list-price">135,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, sýr</div>
+                <div class="menu-list-header">
+                    <span>7. <span class="cs">Tortilla se sýrem</span><span class="en">Tortilla with cheese</span></span>
+                    <span class="menu-list-price">135,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, sýr</span><span class="en">meat, salad, sauce, cheese</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>8. Tortilla hawaii</span> <span class="menu-list-price">135,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, ananas</div>
+                <div class="menu-list-header">
+                    <span>8. <span class="cs">Tortilla hawaii</span><span class="en">Tortilla hawaii</span></span>
+                    <span class="menu-list-price">135,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, ananas</span><span class="en">meat, salad, sauce, pineapple</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>9. Tortilla jen maso</span> <span class="menu-list-price">155,-</span></div>
-                <div class="menu-list-desc">jen maso s omáčkou</div>
+                <div class="menu-list-header">
+                    <span>9. <span class="cs">Tortilla jen maso</span><span class="en">Tortilla meat only</span></span>
+                    <span class="menu-list-price">155,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">jen maso s omáčkou</span><span class="en">only meat, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>10. Tortilla Mardini</span> <span class="menu-list-price">160,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, sýr, olivy</div>
+                <div class="menu-list-header">
+                    <span>10. <span class="cs">Tortilla Mardini</span><span class="en">Mardini Tortilla</span></span>
+                    <span class="menu-list-price">160,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, sýr, olivy</span><span class="en">meat, salad, sauce, cheese, olives</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>11. Tortilla s hranolkami</span> <span class="menu-list-price">155,-</span></div>
-                <div class="menu-list-desc">maso s omáčkou, hranolky</div>
+                <div class="menu-list-header">
+                    <span>11. <span class="cs">Tortilla s hranolkami</span><span class="en">Tortilla with fries</span></span>
+                    <span class="menu-list-price">155,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso s omáčkou, hranolky</span><span class="en">meat, sauce, fries</span>
+                </div>
             </div>
         </div>
 
         <h3 class="menu-category">Kebab Box</h3>
         <div class="menu-list">
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>12. Malý kebab box</span> <span class="menu-list-price">95,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou</div>
+                <div class="menu-list-header">
+                    <span>12. <span class="cs">Malý kebab box</span><span class="en">Small kebab box</span></span>
+                    <span class="menu-list-price">95,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou</span><span class="en">meat, salad, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>13. Malý kebab box s hranolkami</span> <span class="menu-list-price">100,-</span></div>
-                <div class="menu-list-desc">maso s omáčkou, hranolky</div>
+                <div class="menu-list-header">
+                    <span>13. <span class="cs">Malý kebab box s hranolkami</span><span class="en">Small kebab box with fries</span></span>
+                    <span class="menu-list-price">100,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso s omáčkou, hranolky</span><span class="en">meat, sauce, fries</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>14. Velký kebab box</span> <span class="menu-list-price">110,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou</div>
+                <div class="menu-list-header">
+                    <span>14. <span class="cs">Velký kebab box</span><span class="en">Large kebab box</span></span>
+                    <span class="menu-list-price">110,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou</span><span class="en">meat, salad, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>15. Velký kebab box s hranolkami</span> <span class="menu-list-price">115,-</span></div>
-                <div class="menu-list-desc">maso s omáčkou, hranolky</div>
+                <div class="menu-list-header">
+                    <span>15. <span class="cs">Velký kebab box s hranolkami</span><span class="en">Large kebab box with fries</span></span>
+                    <span class="menu-list-price">115,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso s omáčkou, hranolky</span><span class="en">meat, sauce, fries</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>16. Malý kebab box jen maso</span> <span class="menu-list-price">120,-</span></div>
-                <div class="menu-list-desc">maso s omáčkou</div>
+                <div class="menu-list-header">
+                    <span>16. <span class="cs">Malý kebab box jen maso</span><span class="en">Small kebab box meat only</span></span>
+                    <span class="menu-list-price">120,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso s omáčkou</span><span class="en">meat, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>17. Velký kebab box jen maso</span> <span class="menu-list-price">155,-</span></div>
-                <div class="menu-list-desc">maso s omáčkou</div>
+                <div class="menu-list-header">
+                    <span>17. <span class="cs">Velký kebab box jen maso</span><span class="en">Large kebab box meat only</span></span>
+                    <span class="menu-list-price">155,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso s omáčkou</span><span class="en">meat, sauce</span>
+                </div>
             </div>
         </div>
 
-        <h3 class="menu-category">Kebab Talíř</h3>
+        <h3 class="menu-category">
+            <span class="cs">Kebab Talíř</span>
+            <span class="en">Kebab Plate</span>
+        </h3>
         <div class="menu-list">
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>18. Malý kebab talíř s tureckým chlebem</span> <span class="menu-list-price">125,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, turecký chléb</div>
+                <div class="menu-list-header">
+                    <span>18. <span class="cs">Malý kebab talíř s tureckým chlebem</span><span class="en">Small kebab plate with Turkish bread</span></span>
+                    <span class="menu-list-price">125,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, turecký chléb</span><span class="en">meat, salad, sauce, Turkish bread</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>19. Malý kebab talíř s hranolkami</span> <span class="menu-list-price">135,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, hranolky</div>
+                <div class="menu-list-header">
+                    <span>19. <span class="cs">Malý kebab talíř s hranolkami</span><span class="en">Small kebab plate with fries</span></span>
+                    <span class="menu-list-price">135,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, hranolky</span><span class="en">meat, salad, sauce, fries</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>20. Velký kebab talíř s tureckým chlebem</span> <span class="menu-list-price">155,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, turecký chléb</div>
+                <div class="menu-list-header">
+                    <span>20. <span class="cs">Velký kebab talíř s tureckým chlebem</span><span class="en">Large kebab plate with Turkish bread</span></span>
+                    <span class="menu-list-price">155,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, turecký chléb</span><span class="en">meat, salad, sauce, Turkish bread</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>21. Velký kebab talíř s hranolkami</span> <span class="menu-list-price">165,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, hranolky</div>
+                <div class="menu-list-header">
+                    <span>21. <span class="cs">Velký kebab talíř s hranolkami</span><span class="en">Large kebab plate with fries</span></span>
+                    <span class="menu-list-price">165,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, hranolky</span><span class="en">meat, salad, sauce, fries</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>22. Kebab talíř Mardini</span> <span class="menu-list-price">175,-</span></div>
-                <div class="menu-list-desc">maso se salátem a omáčkou, hranolky, sýr, olivy</div>
+                <div class="menu-list-header">
+                    <span>22. <span class="cs">Kebab talíř Mardini</span><span class="en">Mardini Kebab plate</span></span>
+                    <span class="menu-list-price">175,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso se salátem a omáčkou, hranolky, sýr, olivy</span><span class="en">meat, salad, sauce, fries, cheese, olives</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>23. Malý kebab talíř s hranolkami</span> <span class="menu-list-price">140,-</span></div>
-                <div class="menu-list-desc">maso s omáčkou, hranolky</div>
+                <div class="menu-list-header">
+                    <span>23. <span class="cs">Malý kebab talíř s hranolkami</span><span class="en">Small kebab plate with fries</span></span>
+                    <span class="menu-list-price">140,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso s omáčkou, hranolky</span><span class="en">meat, sauce, fries</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>24. Velký kebab talíř s hranolkami</span> <span class="menu-list-price">170,-</span></div>
-                <div class="menu-list-desc">maso s omáčkou, hranolky</div>
+                <div class="menu-list-header">
+                    <span>24. <span class="cs">Velký kebab talíř s hranolkami</span><span class="en">Large kebab plate with fries</span></span>
+                    <span class="menu-list-price">170,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">maso s omáčkou, hranolky</span><span class="en">meat, sauce, fries</span>
+                </div>
             </div>
         </div>
 
         <h3 class="menu-category">Falafel</h3>
         <div class="menu-list">
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>25. Falafel tortilla</span> <span class="menu-list-price">110,-</span></div>
-                <div class="menu-list-desc">falafel se salátem a omáčkou</div>
+                <div class="menu-list-header">
+                    <span>25. <span class="cs">Falafel tortilla</span><span class="en">Falafel tortilla</span></span>
+                    <span class="menu-list-price">110,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">falafel se salátem a omáčkou</span><span class="en">falafel, salad, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>26. Falafel talíř</span> <span class="menu-list-price">135,-</span></div>
-                <div class="menu-list-desc">falafel se salátem a omáčkou, turecký chléb</div>
+                <div class="menu-list-header">
+                    <span>26. <span class="cs">Falafel talíř</span><span class="en">Falafel plate</span></span>
+                    <span class="menu-list-price">135,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">falafel se salátem a omáčkou, turecký chléb</span><span class="en">falafel, salad, sauce, Turkish bread</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>27. Stripsy v tortille</span> <span class="menu-list-price">120,-</span></div>
-                <div class="menu-list-desc">kuřecí stripsy se salátem a omáčkou</div>
+                <div class="menu-list-header">
+                    <span>27. <span class="cs">Stripsy v tortille</span><span class="en">Strips in tortilla</span></span>
+                    <span class="menu-list-price">120,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">kuřecí stripsy se salátem a omáčkou</span><span class="en">chicken strips, salad, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>28. Stripsy talíř</span> <span class="menu-list-price">165,-</span></div>
-                <div class="menu-list-desc">kuřecí stripsy se salátem a omáčkou</div>
+                <div class="menu-list-header">
+                    <span>28. <span class="cs">Stripsy talíř</span><span class="en">Strips plate</span></span>
+                    <span class="menu-list-price">165,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">kuřecí stripsy se salátem a omáčkou</span><span class="en">chicken strips, salad, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>29. Falafel v tureckém chlebu</span> <span class="menu-list-price">100,-</span></div>
-                <div class="menu-list-desc">falafel se salátem a omáčkou, turecký chléb</div>
+                <div class="menu-list-header">
+                    <span>29. <span class="cs">Falafel v tureckém chlebu</span><span class="en">Falafel in Turkish bread</span></span>
+                    <span class="menu-list-price">100,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">falafel se salátem a omáčkou, turecký chléb</span><span class="en">falafel, salad, sauce, Turkish bread</span>
+                </div>
             </div>
         </div>
 
-        <h3 class="menu-category">Saláty</h3>
+        <h3 class="menu-category">
+            <span class="cs">Saláty</span>
+            <span class="en">Salads</span>
+        </h3>
         <div class="menu-list">
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>30. Selský salát</span> <span class="menu-list-price">85,-</span></div>
-                <div class="menu-list-desc">salát, sýr a omáčka</div>
+                <div class="menu-list-header">
+                    <span>30. <span class="cs">Selský salát</span><span class="en">Farmer's salad</span></span>
+                    <span class="menu-list-price">85,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">salát, sýr a omáčka</span><span class="en">salad, cheese, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>31. Míchaný salát</span> <span class="menu-list-price">100,-</span></div>
-                <div class="menu-list-desc">salát, sýr a olivy</div>
+                <div class="menu-list-header">
+                    <span>31. <span class="cs">Míchaný salát</span><span class="en">Mixed salad</span></span>
+                    <span class="menu-list-price">100,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">salát, sýr a olivy</span><span class="en">salad, cheese, olives</span>
+                </div>
             </div>
         </div>
 
-        <h3 class="menu-category">Vegetariánské</h3>
+        <h3 class="menu-category">
+            <span class="cs">Vegetariánské</span>
+            <span class="en">Vegetarian</span>
+        </h3>
         <div class="menu-list">
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>32. Vegetariánská tortilla</span> <span class="menu-list-price">110,-</span></div>
-                <div class="menu-list-desc">salát, zelenina, omáčka, sýr, olivy</div>
+                <div class="menu-list-header">
+                    <span>32. <span class="cs">Vegetariánská tortilla</span><span class="en">Vegetarian tortilla</span></span>
+                    <span class="menu-list-price">110,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">salát, zelenina, omáčka, sýr, olivy</span><span class="en">salad, vegetables, sauce, cheese, olives</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>33. Smažený sýr v tureckém chlebu</span> <span class="menu-list-price">110,-</span></div>
-                <div class="menu-list-desc">salát, smažený sýr, omáčka</div>
+                <div class="menu-list-header">
+                    <span>33. <span class="cs">Smažený sýr v tureckém chlebu</span><span class="en">Fried cheese in Turkish bread</span></span>
+                    <span class="menu-list-price">110,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">salát, smažený sýr, omáčka</span><span class="en">salad, fried cheese, sauce</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>34. Smažený sýr talíř</span> <span class="menu-list-price">150,-</span></div>
-                <div class="menu-list-desc">hranolky, omáčka, smažený sýr</div>
+                <div class="menu-list-header">
+                    <span>34. <span class="cs">Smažený sýr talíř</span><span class="en">Fried cheese plate</span></span>
+                    <span class="menu-list-price">150,-</span>
+                </div>
+                <div class="menu-list-desc">
+                    <span class="cs">hranolky, omáčka, smažený sýr</span><span class="en">fries, sauce, fried cheese</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>35. Hranolky</span> <span class="menu-list-price">65,-</span></div>
-                <div class="menu-list-desc"></div>
+                <div class="menu-list-header">
+                    <span>35. <span class="cs">Hranolky</span><span class="en">Fries</span></span>
+                    <span class="menu-list-price">65,-</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>36. Americké brambory</span> <span class="menu-list-price">65,-</span></div>
-                <div class="menu-list-desc"></div>
+                <div class="menu-list-header">
+                    <span>36. <span class="cs">Americké brambory</span><span class="en">Potato wedges</span></span>
+                    <span class="menu-list-price">65,-</span>
+                </div>
             </div>
         </div>
 
         <h3 class="menu-category">Extra</h3>
         <div class="menu-list">
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>37. Víc masa</span> <span class="menu-list-price">45,-</span></div>
+                <div class="menu-list-header">
+                    <span>37. <span class="cs">Víc masa</span><span class="en">Extra meat</span></span>
+                    <span class="menu-list-price">45,-</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>38. Olivy</span> <span class="menu-list-price">20,-</span></div>
+                <div class="menu-list-header">
+                    <span>38. <span class="cs">Olivy</span><span class="en">Olives</span></span>
+                    <span class="menu-list-price">20,-</span>
+                </div>
             </div>
             <div class="menu-list-item">
-                <div class="menu-list-header"><span>39. Sýr</span> <span class="menu-list-price">25,-</span></div>
+                <div class="menu-list-header">
+                    <span>39. <span class="cs">Sýr</span><span class="en">Cheese</span></span>
+                    <span class="menu-list-price">25,-</span>
+                </div>
             </div>
         </div>
 
         <div class="menu-sauces">
-            <h3>Omáčky</h3>
-            <p>Česneková - Bylinková - Kari - Chilli</p>
+            <h3>
+                <span class="cs">Omáčky</span>
+                <span class="en">Sauces</span>
+            </h3>
+            <p>
+                <span class="cs">Česneková - Bylinková - Kari - Chilli</span>
+                <span class="en">Garlic - Herb - Curry - Chilli</span>
+            </p>
         </div>
 
     </section>
 
     <section id="hours" class="hours">
-        <h2>Otevírací doba</h2>
+        <h2>
+            <span class="cs">Otevírací doba</span>
+            <span class="en">Opening Hours</span>
+        </h2>
         <div class="hours-list">
             <div class="hours-item">
-                <span class="hours-day">Pondělí</span>
+                <span class="hours-day"><span class="cs">Pondělí</span><span class="en">Monday</span></span>
                 <span class="hours-time">10:00 - 00:00</span>
             </div>
             <div class="hours-item">
-                <span class="hours-day">Úterý</span>
+                <span class="hours-day"><span class="cs">Úterý</span><span class="en">Tuesday</span></span>
                 <span class="hours-time">10:00 - 00:00</span>
             </div>
             <div class="hours-item">
-                <span class="hours-day">Středa</span>
+                <span class="hours-day"><span class="cs">Středa</span><span class="en">Wednesday</span></span>
                 <span class="hours-time">10:00 - 00:00</span>
             </div>
             <div class="hours-item">
-                <span class="hours-day">Čtvrtek</span>
+                <span class="hours-day"><span class="cs">Čtvrtek</span><span class="en">Thursday</span></span>
                 <span class="hours-time">10:00 - 00:00</span>
             </div>
             <div class="hours-item">
-                <span class="hours-day">Pátek</span>
+                <span class="hours-day"><span class="cs">Pátek</span><span class="en">Friday</span></span>
                 <span class="hours-time">10:00 - 01:00</span>
             </div>
             <div class="hours-item">
-                <span class="hours-day">Sobota</span>
+                <span class="hours-day"><span class="cs">Sobota</span><span class="en">Saturday</span></span>
                 <span class="hours-time">10:00 - 01:00</span>
             </div>
             <div class="hours-item">
-                <span class="hours-day">Neděle</span>
+                <span class="hours-day"><span class="cs">Neděle</span><span class="en">Sunday</span></span>
                 <span class="hours-time">11:00 - 00:00</span>
             </div>
         </div>
     </section>
 
     <section id="find-us" class="find-us">
-        <h2>Kde nás najdete</h2>
-        <p>Adresa: <strong>Sokolská 548/44, 779 00 Olomouc</strong></p>
+        <h2>
+            <span class="cs">Kde nás najdete</span>
+            <span class="en">Location</span>
+        </h2>
+        <p>
+            <span class="cs">Adresa:</span><span class="en">Address:</span> 
+            <strong>Sokolská 548/44, 779 00 Olomouc</strong>
+        </p>
         <div class="map-container">
             <iframe src="https://maps.google.com/maps?q=Mardini%20Kebab,%20Sokolsk%C3%A1%20548/44,%20Olomouc&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
     <section id="reviews" class="reviews">
-        <h2>Hodnocení zákazníků</h2>
+        <h2>
+            <span class="cs">Hodnocení zákazníků</span>
+            <span class="en">Customer Reviews</span>
+        </h2>
         <div class="reviews-grid">
             <div class="review-card">
                 <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                <p class="review-text">"Velmi dobrý kebab."</p>
+                <p class="review-text">
+                    <span class="cs">"Velmi dobrý kebab."</span>
+                    <span class="en">"Very good kebab."</span>
+                </p>
                 <div class="review-author">- Papaja</div>
             </div>
             <div class="review-card">
                 <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                <p class="review-text">"Výborný kebab, čerstvá ochucená zelenina. Opakovaně jsme spokojeni."</p>
+                <p class="review-text">
+                    <span class="cs">"Výborný kebab, čerstvá ochucená zelenina. Opakovaně jsme spokojeni."</span>
+                    <span class="en">"Excellent kebab, fresh seasoned vegetables. Always satisfied."</span>
+                </p>
                 <div class="review-author">- Bohumil</div>
             </div>
             <div class="review-card">
                 <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                <p class="review-text">"Skvělý kebab, příjemná obsluha."</p>
+                <p class="review-text">
+                    <span class="cs">"Skvělý kebab, příjemná obsluha."</span>
+                    <span class="en">"Great kebab, friendly staff."</span>
+                </p>
                 <div class="review-author">- Breptacraft</div>
             </div>
         </div>
     </section>
 
     <section id="location" class="location">
-        <h2>Kontakt</h2>
-        <p>📞 Telefon: <strong>+420 773 154 000</strong></p>
+        <h2>
+            <span class="cs">Kontakt</span>
+            <span class="en">Contact</span>
+        </h2>
+        <p>📞 <span class="cs">Telefon:</span><span class="en">Phone:</span> <strong>+420 773 154 000</strong></p>
         
         <div class="status" id="store-status">
             <div class="status-indicator" id="status-dot"></div>
-            <span id="status-text">Ověřuji otevírací dobu...</span>
+            <span id="status-text">
+                <span class="cs">Ověřuji otevírací dobu...</span>
+                <span class="en">Checking hours...</span>
+            </span>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 Mardini Kebab. Všechna práva vyhrazena.</p>
+        <p>
+            © 2026 Mardini Kebab. 
+            <span class="cs">Všechna práva vyhrazena.</span>
+            <span class="en">All rights reserved.</span>
+        </p>
     </footer>
 
     <script>
@@ -435,6 +701,20 @@
             }
         }
 
+        // Přepínání jazyka (CZ / EN)
+        function toggleLanguage() {
+            const body = document.body;
+            if (body.classList.contains('lang-cs')) {
+                body.classList.remove('lang-cs');
+                body.classList.add('lang-en');
+            } else {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-cs');
+            }
+            // Aktualizace textu Otevřeno/Zavřeno do správného jazyka
+            checkStoreHours(); 
+        }
+
         // Kontrola otevírací doby
         function checkStoreHours() {
             const currentHourStr = new Date().toLocaleString("en-US", {timeZone: "Europe/Prague", hour: 'numeric', hour12: false});
@@ -443,6 +723,7 @@
             
             const statusText = document.getElementById('status-text');
             const statusDot = document.getElementById('status-dot');
+            const isEn = document.body.classList.contains('lang-en');
             
             let isOpen = false;
             
@@ -458,14 +739,15 @@
             }
 
             if (isOpen) { 
-                statusText.innerText = "🟢 OTEVŘENO";
+                statusText.innerText = isEn ? "🟢 OPEN" : "🟢 OTEVŘENO";
                 statusDot.style.backgroundColor = "#4CAF50"; 
             } else {
-                statusText.innerText = "🔴 ZAVŘENO";
+                statusText.innerText = isEn ? "🔴 CLOSED" : "🔴 ZAVŘENO";
                 statusDot.style.backgroundColor = "#F44336"; 
             }
         }
 
+        // Spuštění po načtení stránky
         window.onload = checkStoreHours;
     </script>
 </body>
